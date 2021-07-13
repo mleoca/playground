@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+data:
+  postgres.conf: |
+    {{ .Files.Get "setup/postgres.conf" | nindent 4 }}
+  master.conf: |
+    {{ .Files.Get "setup/master.conf" | nindent 4 }}
+  replica.conf: |
+    {{ .Files.Get "setup/replica.conf" | nindent 4 }}
+  pg_hba.conf: |
+    {{ .Files.Get "setup/pg_hba.conf" | nindent 4 }}
+  create-replica-role.sh: |
+    {{ .Files.Get "setup/create-replica-role.sh" | nindent 4 }}
+  postgres-replica-init.sh: |
+    {{ .Files.Get "setup/postgres-replica-init.sh" | nindent 4 }}
+
+
