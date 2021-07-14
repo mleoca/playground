@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>To do list</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-3">
+    <div class="container p-3 my-3 border">
+        <h1 style="text-align: center">To do list</h1>
+    </div>
+    {% if toDoList|length < 1 %}
+    <h4 style="text-align: center">To do list is empty, you can add new items!</h4>
+    {% else %}
+    <div class="container p-3 my-3 border">
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Todo</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for todo in toDoList %}
+                <tr>
+                    <td>{{ todo.id }}</td>
+                    <td>{{ todo.content }}</td>
+                    <td>{{ todo.date_created.date() }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-light btn-sm" href="/update/{{todo.id}}">Edit</a>
+                            <a class="btn btn-light btn-sm" href="/delete/{{todo.id}}">Remove</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <div class="form-inline d-flex justify-content-center">
+            <div class="form-group">
+                <form action="/" method="POST">
+                    <input class="form-control" type="text" name="content" id="content">
+                    <input class="btn btn-light" type="submit" value="Add todo">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
