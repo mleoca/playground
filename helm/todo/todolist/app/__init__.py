@@ -15,9 +15,7 @@ POSTGRES = {
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(url)s:%(port)s/%(db)s' % POSTGRES
 
 db = SQLAlchemy(app)
-db.create_all()
 
 from app import routes
-
 
 app.run(debug=True)

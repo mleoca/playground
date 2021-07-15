@@ -1,0 +1,11 @@
+{
+    "name": "todo",
+    "devDependencies": {
+        "@types/node": "^10.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0",
+        "@pulumi/kubernetes": "^3.5.0",
+        "@pulumi/gcp": "^5.11.0"
+    }
+}

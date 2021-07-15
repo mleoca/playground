@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -x
+
 printf "Running init replica...\n"
 
-[[ ! "$(which nc > /dev/null 2>&1)" ]] && apt update && apt install netcat -y
+[[ ! "$(which nc > /dev/null 2>&1)" ]] && apt-get update && apt-get install netcat -y
 
 while ! nc -zv -w10 postgres-master 5432; do 
     printf "Waiting for postgres master to get online\n"

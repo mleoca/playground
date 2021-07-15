@@ -8,6 +8,8 @@ class Todo(db.Model):
 
     def __repr__(self):
         return '<Todo %r>' % self.id
+        
+db.create_all()
 
 def get_todo():
     toDoList = Todo.query.order_by(Todo.date_created).all()
